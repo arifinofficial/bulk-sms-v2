@@ -20,6 +20,9 @@
                                 <jet-nav-link :href="route('dashboard')" :active="route().current('dashboard')">
                                     Dashboard
                                 </jet-nav-link>
+                                <jet-nav-link :href="route('group-management.index')" :active="route().current('group-management.index')">
+                                    Group Management
+                                </jet-nav-link>
                             </div>
                         </div>
 

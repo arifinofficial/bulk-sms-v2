@@ -29,6 +29,9 @@ class Team extends JetstreamTeam
     protected $fillable = [
         'name',
         'personal_team',
+        'api_username',
+        'api_password',
+        'msisdn_sender'
     ];
 
     /**

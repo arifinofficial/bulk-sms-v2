@@ -30,13 +30,10 @@ class MemberImport implements ToModel, WithHeadingRow, WithValidation, WithChunk
     */
     public function model(array $row)
     {
-        $attributes = $row;
-        unset($attributes['msisdn']);
-
         return new Member([
             'group_id' => $this->group_id,
             'msisdn' => $row['msisdn'],
-            'attribute' => $attributes,
+            'attribute' => $row,
         ]);
     }
 

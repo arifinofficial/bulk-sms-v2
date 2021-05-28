@@ -42,6 +42,10 @@
                     </template>
 
                     <template #actions>
+                        <inertia-link :href="route('group-management.index')" class="mr-4">
+                            <jet-secondary-button> Close </jet-secondary-button>
+                        </inertia-link>
+
                         <jet-button
                             :class="{ 'opacity-25': form.processing }"
                             :disabled="form.processing"
@@ -58,6 +62,7 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
+import JetSecondaryButton from "@/Jetstream/SecondaryButton";
 import JetFormSection from "@/Jetstream/FormSection";
 import JetInput from "@/Jetstream/Input";
 import JetInputError from "@/Jetstream/InputError";
@@ -71,6 +76,7 @@ export default {
         JetInput,
         JetInputError,
         JetLabel,
+        JetSecondaryButton
     },
     data() {
         return {
@@ -88,7 +94,6 @@ export default {
             })
         },
         changeFile() {
-            console.log(this.$refs.file.files[0]);
             this.form.file = this.$refs.file.files[0];
         }
     }

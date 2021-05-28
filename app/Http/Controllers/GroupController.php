@@ -11,6 +11,7 @@ use Maatwebsite\Excel\Facades\Excel;
 use Maatwebsite\Excel\HeadingRowImport;
 use App\Imports\MemberImport;
 use Illuminate\Support\Facades\Redirect;
+use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
 
 class GroupController extends Controller
 {
@@ -74,8 +75,8 @@ class GroupController extends Controller
 
             DB::commit();
         } catch (\Throwable $th) {
-            //throw $th;
             dd($th);
+            //throw $th;
             DB::rollback();
         }
 
@@ -101,7 +102,9 @@ class GroupController extends Controller
      */
     public function edit($id)
     {
-        //
+        $groupModel = Group::findOrFail($id);
+
+        return Inertia::render('Groups/Edit', compact('groupModel'));
     }
 
     /**
@@ -113,7 +116,14 @@ class GroupController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|string'
+        ]);
+
+        $groupModel = Group::findOrFail($id);
+        $groupModel->update($request->all());
+
+        return Redirect::route('group-management.index');
     }
 
     /**
@@ -125,5 +135,18 @@ class GroupController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dataGrid(Request $request)
+    {
+        $length = $request->input('length');
+        $orderBy = $request->input('column'); //Index
+        $orderByDir = $request->input('dir', 'asc');
+        $searchValue = $request->input('search');
+
+        $query = Group::eloquentQuery($orderBy, $orderByDir, $searchValue);
+        $data = $query->where('team_id', $request->user()->currentTeam->id)->paginate($length);
+
+        return new DataTableCollectionResource($data);
     }
 }

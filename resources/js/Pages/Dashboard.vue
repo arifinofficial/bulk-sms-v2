@@ -12,7 +12,6 @@
                     <welcome />
                 </div>
             </div>
-            <test />
         </div>
     </app-layout>
 </template>
@@ -20,13 +19,11 @@
 <script>
     import AppLayout from '@/Layouts/AppLayout'
     import Welcome from '@/Jetstream/Welcome'
-    import Test from '@/Pages/Test'
 
     export default {
         components: {
             AppLayout,
             Welcome,
-            Test
         },
     }
 </script>

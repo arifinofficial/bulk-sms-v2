@@ -11,22 +11,20 @@
                 <div
                     class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-6"
                 >
-                    <div class="text-right">
+                    <div class="text-right mb-4">
                         <inertia-link :href="route('group-management.create')">
                             <jet-button> Create </jet-button>
                         </inertia-link>
-
-                        <!-- <data-table
-                            :columns="columns"
-                            order-dir="desc"
-                            framework="tailwind"
-                            ref="datatable"
-                        >
-                        </data-table> -->
                     </div>
+                    <data-table
+                        :columns="columns"
+                        order-dir="desc"
+                        framework="tailwind"
+                        url="/data-grid/group-management"
+                        ref="datatable"
+                    />
                 </div>
             </div>
-            <test />
         </div>
     </app-layout>
 </template>
@@ -34,13 +32,43 @@
 <script>
 import AppLayout from "@/Layouts/AppLayout";
 import JetButton from "@/Jetstream/Button";
-// import DataTable from 'laravel-vue-datatable';
+import ClickableColumn from '@/Components/ClickableColumn';
 
 export default {
     components: {
         AppLayout,
         JetButton,
-        // DataTable
+        ClickableColumn
     },
+    data(){
+        return {
+            columns: [
+                {
+                    label: "Group Title",
+                    name: "title",
+                    orderable: true,
+                    component: ClickableColumn,
+                    meta: {
+                        route: 'group-management.edit',
+                        title: 'title',
+                    }
+                },
+                {
+                    label: "Created At",
+                    name: "created_at",
+                    orderable: true,
+                    width: 30,
+                    transform: (value) => new Date(value.data.updated_at).toLocaleString()
+                },
+                {
+                    label: "Updated At",
+                    name: "updated_at",
+                    orderable: true,
+                    width: 30,
+                    transform: (value) => new Date(value.data.updated_at).toLocaleString()
+                }
+            ]
+        }
+    }
 };
 </script>

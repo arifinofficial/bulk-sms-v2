@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use JamesDordoy\LaravelVueDatatable\Traits\LaravelVueDatatableTrait;
 
 class Member extends Model
 {
-    use HasFactory;
+    use HasFactory, LaravelVueDatatableTrait;
 
     protected $fillable = [
         'group_id',
@@ -24,4 +25,16 @@ class Member extends Model
     {
         $this->attributes['attribute'] = serialize($value);
     }
+
+    protected $dataTableColumns = [
+        'id' => [
+            'searchable' => false,
+        ],
+        'msisdn' => [
+            'searchable' => true,
+        ],
+        'attribute' => [
+            'searchable' => false,
+        ]
+    ];
 }

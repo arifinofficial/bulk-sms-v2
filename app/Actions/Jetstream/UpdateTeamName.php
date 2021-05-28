@@ -22,10 +22,16 @@ class UpdateTeamName implements UpdatesTeamNames
 
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
+            'api_username' => ['required', 'string', 'max:255'],
+            'api_password' => ['required', 'string', 'max:255'],
+            'msisdn_sender' => ['required', 'string', 'max:255'],
         ])->validateWithBag('updateTeamName');
 
         $team->forceFill([
             'name' => $input['name'],
+            'api_username' => $input['api_username'],
+            'api_password' => $input['api_password'],
+            'msisdn_sender' => $input['msisdn_sender'],
         ])->save();
     }
 }

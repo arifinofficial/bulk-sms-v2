@@ -6,17 +6,17 @@
             <!-- Add Team Member -->
             <jet-form-section @submitted="addTeamMember">
                 <template #title>
-                    Add Team Member
+                    Add Organization Member
                 </template>
 
                 <template #description>
-                    Add a new team member to your team, allowing them to collaborate with you.
+                    Add a new organization member to your organization, allowing them to collaborate with you.
                 </template>
 
                 <template #form>
                     <div class="col-span-6">
                         <div class="max-w-xl text-sm text-gray-600">
-                            Please provide the email address of the person you would like to add to this team.
+                            Please provide the email address of the person you would like to add to this organization.
                         </div>
                     </div>
 
@@ -33,7 +33,7 @@
                         <jet-input-error :message="addTeamMemberForm.errors.role" class="mt-2" />
 
                         <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
-                            <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200"
+                            <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue"
                                             :class="{'border-t border-gray-200 rounded-t-none': i > 0, 'rounded-b-none': i != Object.keys(availableRoles).length - 1}"
                                             @click="addTeamMemberForm.role = role.key"
                                             v-for="(role, i) in availableRoles"
@@ -76,11 +76,11 @@
             <!-- Team Member Invitations -->
             <jet-action-section class="mt-10 sm:mt-0">
                 <template #title>
-                    Pending Team Invitations
+                    Pending Organization Invitations
                 </template>
 
                 <template #description>
-                    These people have been invited to your team and have been sent an invitation email. They may join the team by accepting the email invitation.
+                    These people have been invited to your organization and have been sent an invitation email. They may join the organization by accepting the email invitation.
                 </template>
 
                 <!-- Pending Team Member Invitation List -->
@@ -109,11 +109,11 @@
             <!-- Manage Team Members -->
             <jet-action-section class="mt-10 sm:mt-0">
                 <template #title>
-                    Team Members
+                    Organization Members
                 </template>
 
                 <template #description>
-                    All of the people that are part of this team.
+                    All of the people that are part of this organization.
                 </template>
 
                 <!-- Team Member List -->
@@ -166,7 +166,7 @@
             <template #content>
                 <div v-if="managingRoleFor">
                     <div class="relative z-0 mt-1 border border-gray-200 rounded-lg cursor-pointer">
-                        <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:ring focus:ring-blue-200"
+                        <button type="button" class="relative px-4 py-3 inline-flex w-full rounded-lg focus:z-10 focus:outline-none focus:border-blue-300 focus:shadow-outline-blue"
                                         :class="{'border-t border-gray-200 rounded-t-none': i > 0, 'rounded-b-none': i !== Object.keys(availableRoles).length - 1}"
                                         @click="updateRoleForm.role = role.key"
                                         v-for="(role, i) in availableRoles"
@@ -192,11 +192,11 @@
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="currentlyManagingRole = false">
-                    Cancel
+                <jet-secondary-button @click.native="currentlyManagingRole = false">
+                    Nevermind
                 </jet-secondary-button>
 
-                <jet-button class="ml-2" @click="updateRole" :class="{ 'opacity-25': updateRoleForm.processing }" :disabled="updateRoleForm.processing">
+                <jet-button class="ml-2" @click.native="updateRole" :class="{ 'opacity-25': updateRoleForm.processing }" :disabled="updateRoleForm.processing">
                     Save
                 </jet-button>
             </template>
@@ -205,19 +205,19 @@
         <!-- Leave Team Confirmation Modal -->
         <jet-confirmation-modal :show="confirmingLeavingTeam" @close="confirmingLeavingTeam = false">
             <template #title>
-                Leave Team
+                Leave Organization
             </template>
 
             <template #content>
-                Are you sure you would like to leave this team?
+                Are you sure you would like to leave this organization?
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="confirmingLeavingTeam = false">
-                    Cancel
+                <jet-secondary-button @click.native="confirmingLeavingTeam = false">
+                    Nevermind
                 </jet-secondary-button>
 
-                <jet-danger-button class="ml-2" @click="leaveTeam" :class="{ 'opacity-25': leaveTeamForm.processing }" :disabled="leaveTeamForm.processing">
+                <jet-danger-button class="ml-2" @click.native="leaveTeam" :class="{ 'opacity-25': leaveTeamForm.processing }" :disabled="leaveTeamForm.processing">
                     Leave
                 </jet-danger-button>
             </template>
@@ -226,19 +226,19 @@
         <!-- Remove Team Member Confirmation Modal -->
         <jet-confirmation-modal :show="teamMemberBeingRemoved" @close="teamMemberBeingRemoved = null">
             <template #title>
-                Remove Team Member
+                Remove Organization Member
             </template>
 
             <template #content>
-                Are you sure you would like to remove this person from the team?
+                Are you sure you would like to remove this person from the organization?
             </template>
 
             <template #footer>
-                <jet-secondary-button @click="teamMemberBeingRemoved = null">
-                    Cancel
+                <jet-secondary-button @click.native="teamMemberBeingRemoved = null">
+                    Nevermind
                 </jet-secondary-button>
 
-                <jet-danger-button class="ml-2" @click="removeTeamMember" :class="{ 'opacity-25': removeTeamMemberForm.processing }" :disabled="removeTeamMemberForm.processing">
+                <jet-danger-button class="ml-2" @click.native="removeTeamMember" :class="{ 'opacity-25': removeTeamMemberForm.processing }" :disabled="removeTeamMemberForm.processing">
                     Remove
                 </jet-danger-button>
             </template>

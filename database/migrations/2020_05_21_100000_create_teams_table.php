@@ -18,6 +18,9 @@ class CreateTeamsTable extends Migration
             $table->foreignId('user_id')->index();
             $table->string('name');
             $table->boolean('personal_team');
+            $table->string('api_username')->nullable();
+            $table->string('api_password')->nullable();
+            $table->string('msisdn_sender')->nullable();
             $table->timestamps();
         });
     }

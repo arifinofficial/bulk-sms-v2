@@ -47,6 +47,7 @@ class BroadcastController extends Controller
     {
         $currentTeam = $request->user()->currentTeam;
         if ($currentTeam->api_username === null || $currentTeam->api_password === null || $currentTeam->msisdn_sender === null) {
+            return Redirect::back()->with(['toast' => ['isSuccess' => false, 'message' => "Broadcast doesn't work if organization data is incomplete, please update organization data on organization settings page."]]);
             return;
         }
 

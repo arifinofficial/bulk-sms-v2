@@ -1,5 +1,17 @@
 <template>
-    <inertia-link :href="route(meta.route, data.id)" class="hover:text-blue-500 hover:underline">
+    <inertia-link
+        v-if="meta.modal"
+        @click.prevent="click(data)"
+        :href="route(meta.route, data.id)"
+        class="hover:text-blue-500 hover:underline"
+    >
+        {{ title }}
+    </inertia-link>
+    <inertia-link
+        v-else
+        :href="route(meta.route, data.id)"
+        class="hover:text-blue-500 hover:underline"
+    >
         {{ title }}
     </inertia-link>
 </template>
@@ -8,12 +20,16 @@
 export default {
     props: {
         data: {},
-        meta: {}
+        meta: {},
+        click: {
+            type: Function,
+            default: () => {},
+        },
     },
     computed: {
-        title(){
+        title() {
             return eval(`this.data.${this.meta.title}`);
-        }
-    }
-}
+        },
+    },
+};
 </script>

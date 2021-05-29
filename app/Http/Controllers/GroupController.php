@@ -74,13 +74,14 @@ class GroupController extends Controller
             Excel::import(new MemberImport($groupId), $storagePath);
 
             DB::commit();
+
+            return Redirect::route('group-management.index')->with(['toast' => ['message' => 'Group created.']]);
         } catch (\Throwable $th) {
-            dd($th);
             //throw $th;
             DB::rollback();
-        }
 
-        return Redirect::route('group-management.index');
+            return Redirect::route('group-management.index')->with(['toast' => ['isSuccess' => false, 'message' => 'Error! Please refresh the page and try again.']]);
+        }
     }
 
     /**
@@ -123,7 +124,7 @@ class GroupController extends Controller
         $groupModel = Group::findOrFail($id);
         $groupModel->update($request->all());
 
-        return Redirect::route('group-management.index');
+        return Redirect::route('group-management.index')->with(['toast' => ['message' => 'Group updated.']]);
     }
 
     /**

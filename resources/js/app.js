@@ -14,6 +14,11 @@ Vue.use(DataTable);
 const app = document.getElementById('app');
 
 new Vue({
+    mounted(){
+        window.addEventListener('popstate', () => {
+            this.$page.props.popstate = true;
+        })
+    },
     render: (h) =>
         h(InertiaApp, {
             props: {

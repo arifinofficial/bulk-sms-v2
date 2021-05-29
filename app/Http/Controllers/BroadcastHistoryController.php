@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Models\Broadcast;
+use App\Models\BroadcastMember;
 use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
 
 class BroadcastHistoryController extends Controller
@@ -47,7 +49,7 @@ class BroadcastHistoryController extends Controller
      */
     public function show($id)
     {
-        //
+        return Inertia::render('BroadcastHistory/Show', compact('id'));
     }
 
     /**
@@ -82,5 +84,18 @@ class BroadcastHistoryController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function dataGrid(Request $request, $group_id)
+    {
+        $length = $request->input('length');
+        $orderBy = $request->input('column'); //Index
+        $orderByDir = $request->input('dir', 'asc');
+        $searchValue = $request->input('search');
+
+        $query = BroadcastMember::eloquentQuery($orderBy, $orderByDir, $searchValue)->where('broadcast_id', $group_id);
+        $data = $query->paginate($length);
+
+        return new DataTableCollectionResource($data);
     }
 }

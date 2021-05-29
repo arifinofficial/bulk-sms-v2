@@ -10,6 +10,7 @@ use App\Enum\BroadcastType;
 use App\Enum\BroadcastStatus;
 use App\Jobs\BroadcastSms;
 use JamesDordoy\LaravelVueDatatable\Http\Resources\DataTableCollectionResource;
+use Illuminate\Support\Facades\Redirect;
 
 class BroadcastController extends Controller
 {
@@ -69,6 +70,8 @@ class BroadcastController extends Controller
         if ($saveBroadcast->broadcast_type === BroadcastType::NOW) {
             dispatch(new BroadcastSms($saveBroadcast));
         }
+
+        return Redirect::route('broadcast-history.index')->with(['toast' => ['message' => 'Broadcast successfully added to the queue and running in the background. Check the progress on the broadcast history page.']]);
     }
 
     /**

@@ -1,5 +1,8 @@
 <template>
     <div>
+
+        <toast :toast="$page.props.toast" :popstate="$page.props.popstate"/>
+
         <jet-banner />
 
         <div class="min-h-screen bg-gray-100">
@@ -258,6 +261,7 @@
     import JetDropdownLink from '@/Jetstream/DropdownLink'
     import JetNavLink from '@/Jetstream/NavLink'
     import JetResponsiveNavLink from '@/Jetstream/ResponsiveNavLink'
+    import Toast from '@/Components/Toast'
 
     export default {
         components: {
@@ -267,6 +271,7 @@
             JetDropdownLink,
             JetNavLink,
             JetResponsiveNavLink,
+            Toast,
         },
 
         data() {

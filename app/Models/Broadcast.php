@@ -60,4 +60,14 @@ class Broadcast extends Model
     {
         return $this->belongsTo(Team::class);
     }
+
+    /**
+     * Get all of the broadcastMembers for the Broadcast
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function broadcastMembers()
+    {
+        return $this->hasMany(BroadcastMember::class);
+    }
 }

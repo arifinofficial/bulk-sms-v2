@@ -29,7 +29,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
-    Route::resource('test', App\Http\Controllers\TestController::class);
     Route::resource('group-management', App\Http\Controllers\GroupController::class)->except(['show']);
     Route::resource('broadcast-manager', App\Http\Controllers\BroadcastController::class)->except(['show']);
     Route::resource('broadcast-history', App\Http\Controllers\BroadcastHistoryController::class);
@@ -38,6 +37,7 @@ Route::group(['middleware' => ['auth:sanctum', 'verified']], function () {
         Route::get('group-management', [App\Http\Controllers\GroupController::class, 'dataGrid'])->name('group-management');
         Route::get('member/{group_id}', [App\Http\Controllers\MemberController::class, 'dataGrid'])->name('member');
         Route::get('broadcast-history', [App\Http\Controllers\BroadcastController::class, 'dataGrid'])->name('broadcast-history');
+        Route::get('broadcast-history-detail/{broadcast_id}', [App\Http\Controllers\BroadcastHistoryController::class, 'dataGrid'])->name('broadcast-history-detail');
     });
 });
 

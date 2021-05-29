@@ -33,5 +33,6 @@ return [
     '3711' => 'SMS sent to Telco but No Delivery Report Received (DLR Timed out)',
     '3712' => 'SMS sent To Telco and Delivery Report From Telco = UNDELIVERED',
     '3713' => 'SMS sent To Telco and Delivery Report From Telco = MSISDN Not',
-    '3788' => 'Found/Unknown/Not Registered'
+    '3788' => 'Found/Unknown/Not Registered',
+    'list_success_final_status_code' => [3700, 3701, 3711, 3712, 3713],
 ];

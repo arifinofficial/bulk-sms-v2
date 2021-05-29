@@ -12,7 +12,9 @@ use App\Http\Traits\SendSmsTrait;
 use Illuminate\Support\Facades\Crypt;
 use Config;
 use App\Enum\BroadcastMemberStatus;
+use App\Enum\BroadcastStatus;
 use App\Models\BroadcastMember;
+use Carbon\Carbon;
 
 class BroadcastSms implements ShouldQueue
 {
@@ -40,7 +42,7 @@ class BroadcastSms implements ShouldQueue
         $apiUsername = $this->data->team->api_username;
         $apiPassword = $this->data->team->api_password;
         $msisdnSender = $this->data->team->msisdn_sender;
-        $groupModel = $this->data->group->with('members')->first();
+        $groupModel = $this->data->group;
         $smsText = $this->data->sms_text;
         $boradcastId = $this->data->id;
 
@@ -79,11 +81,17 @@ class BroadcastSms implements ShouldQueue
                 'response_code' => $responseCode,
                 'response_code_display' => $responseCodeDisplay,
                 'session_id' => $sessionId,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ];
 
             array_push($broadcastMemberData, $data);
         }
 
         BroadcastMember::insert($broadcastMemberData);
+
+        $this->data->update([
+            'status' => BroadcastStatus::COMPLETED
+        ]);
     }
 }

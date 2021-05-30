@@ -69137,7 +69137,7 @@ var render = function() {
                   staticClass:
                     "font-semibold text-xl text-gray-800 leading-tight"
                 },
-                [_vm._v("\n            Create Team\n        ")]
+                [_vm._v("\n            Create Organization\n        ")]
               )
             ]
           },

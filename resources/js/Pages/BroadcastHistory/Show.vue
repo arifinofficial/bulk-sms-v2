@@ -44,132 +44,142 @@
             </div>
         </div>
 
-        <jet-dialog-modal :show="showModal" @close="showModal = false" v-if="showModal">
-            <template #title>
-                <h2>Detail Broadcast History</h2>
-            </template>
-            <template #content>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Msisdn" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.msisdn"
-                            disabled
-                        />
+        <div v-if="showModal">
+            <jet-dialog-modal :show="showModal" @close="closeModal">
+                <template #title>
+                    <h2>Detail Broadcast History</h2>
+                </template>
+                <template #content>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Msisdn" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.msisdn"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Broadcast ID" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.broadcast_id"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Session ID" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.session_id"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Key" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.key"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Status" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.status"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Response Code" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.response_code"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Response Code Desc." />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.response_code_display"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Final Response Code" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.final_response_code"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Final Response Code Desc." />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="
+                                    selectedData.final_response_code_display
+                                "
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Operator SMSC ACK" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.operator_smsc_ack"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Operator DLR" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.operator_dlr"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-1">
+                            <jet-label value="Billable" />
+                            <jet-input
+                                type="text"
+                                class="mt-1 block w-full"
+                                v-model="selectedData.billable"
+                                disabled
+                            />
+                        </div>
+                        <div class="col-span-2 sm:col-span-2">
+                            <jet-label value="SMS Text" />
+                            <textarea
+                                cols="30"
+                                rows="3"
+                                v-model="selectedData.sms_text"
+                                class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full"
+                                disabled
+                            ></textarea>
+                        </div>
                     </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Broadcast ID" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.broadcast_id"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Session ID" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.session_id"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Key" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.key"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Status" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.status"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Response Code" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.response_code"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Response Code Desc." />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.response_code_display"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Final Response Code" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.final_response_code"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Final Response Code Desc." />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.final_response_code_display"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Operator SMSC ACK" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.operator_smsc_ack"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Operator DLR" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.operator_dlr"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-1">
-                        <jet-label value="Billable" />
-                        <jet-input
-                            type="text"
-                            class="mt-1 block w-full"
-                            v-model="selectedData.billable"
-                            disabled
-                        />
-                    </div>
-                    <div class="col-span-2 sm:col-span-2">
-                        <jet-label value="SMS Text" />
-                        <textarea cols="30" rows="3" v-model="selectedData.sms_text" class="border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full" disabled></textarea>
-                    </div>
-                </div>
-            </template>
-            <template #footer>
-                <jet-secondary-button @click.native="showModal = false">
-                    Close
-                </jet-secondary-button>
-            </template>
-        </jet-dialog-modal>
+                </template>
+                <template #footer>
+                    <jet-secondary-button @click.native="closeModal">
+                        Close
+                    </jet-secondary-button>
+                </template>
+            </jet-dialog-modal>
+        </div>
     </app-layout>
 </template>
 
@@ -262,6 +272,12 @@ export default {
             this.showModal = true;
             this.selectedData = data;
         },
+        closeModal(){
+            let bodyElement = document.getElementById("body");
+            bodyElement.style.overflow = null;
+            this.showModal = false;
+            this.selectedData = null;
+        }
     },
     computed: {
         gridUrl() {

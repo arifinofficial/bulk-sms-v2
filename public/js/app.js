@@ -4960,6 +4960,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -5040,6 +5050,12 @@ __webpack_require__.r(__webpack_exports__);
     handlerClick: function handlerClick(data) {
       this.showModal = true;
       this.selectedData = data;
+    },
+    closeModal: function closeModal() {
+      var bodyElement = document.getElementById("body");
+      bodyElement.style.overflow = null;
+      this.showModal = false;
+      this.selectedData = null;
     }
   },
   computed: {
@@ -5113,7 +5129,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _Jetstream_Input__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/Jetstream/Input */ "./resources/js/Jetstream/Input.vue");
 /* harmony import */ var _Jetstream_InputError__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/Jetstream/InputError */ "./resources/js/Jetstream/InputError.vue");
 /* harmony import */ var _Jetstream_Label__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/Jetstream/Label */ "./resources/js/Jetstream/Label.vue");
-//
 //
 //
 //
@@ -66813,391 +66828,420 @@ var render = function() {
       ]),
       _vm._v(" "),
       _vm.showModal
-        ? _c("jet-dialog-modal", {
-            attrs: { show: _vm.showModal },
-            on: {
-              close: function($event) {
-                _vm.showModal = false
-              }
-            },
-            scopedSlots: _vm._u(
-              [
-                {
-                  key: "title",
-                  fn: function() {
-                    return [_c("h2", [_vm._v("Detail Broadcast History")])]
-                  },
-                  proxy: true
-                },
-                {
-                  key: "content",
-                  fn: function() {
-                    return [
-                      _c("div", { staticClass: "grid grid-cols-2 gap-4" }, [
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", { attrs: { value: "Msisdn" } }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.msisdn,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.selectedData, "msisdn", $$v)
-                                },
-                                expression: "selectedData.msisdn"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", {
-                              attrs: { value: "Broadcast ID" }
-                            }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.broadcast_id,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "broadcast_id",
-                                    $$v
-                                  )
-                                },
-                                expression: "selectedData.broadcast_id"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", { attrs: { value: "Session ID" } }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.session_id,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.selectedData, "session_id", $$v)
-                                },
-                                expression: "selectedData.session_id"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", { attrs: { value: "Key" } }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.key,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.selectedData, "key", $$v)
-                                },
-                                expression: "selectedData.key"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", { attrs: { value: "Status" } }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.status,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.selectedData, "status", $$v)
-                                },
-                                expression: "selectedData.status"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", {
-                              attrs: { value: "Response Code" }
-                            }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.response_code,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "response_code",
-                                    $$v
-                                  )
-                                },
-                                expression: "selectedData.response_code"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", {
-                              attrs: { value: "Response Code Desc." }
-                            }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.response_code_display,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "response_code_display",
-                                    $$v
-                                  )
-                                },
-                                expression: "selectedData.response_code_display"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", {
-                              attrs: { value: "Final Response Code" }
-                            }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.final_response_code,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "final_response_code",
-                                    $$v
-                                  )
-                                },
-                                expression: "selectedData.final_response_code"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", {
-                              attrs: { value: "Final Response Code Desc." }
-                            }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value:
-                                  _vm.selectedData.final_response_code_display,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "final_response_code_display",
-                                    $$v
-                                  )
-                                },
-                                expression:
-                                  "selectedData.final_response_code_display"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", {
-                              attrs: { value: "Operator SMSC ACK" }
-                            }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.operator_smsc_ack,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "operator_smsc_ack",
-                                    $$v
-                                  )
-                                },
-                                expression: "selectedData.operator_smsc_ack"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", {
-                              attrs: { value: "Operator DLR" }
-                            }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.operator_dlr,
-                                callback: function($$v) {
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "operator_dlr",
-                                    $$v
-                                  )
-                                },
-                                expression: "selectedData.operator_dlr"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-1" },
-                          [
-                            _c("jet-label", { attrs: { value: "Billable" } }),
-                            _vm._v(" "),
-                            _c("jet-input", {
-                              staticClass: "mt-1 block w-full",
-                              attrs: { type: "text", disabled: "" },
-                              model: {
-                                value: _vm.selectedData.billable,
-                                callback: function($$v) {
-                                  _vm.$set(_vm.selectedData, "billable", $$v)
-                                },
-                                expression: "selectedData.billable"
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "col-span-2 sm:col-span-2" },
-                          [
-                            _c("jet-label", { attrs: { value: "SMS Text" } }),
-                            _vm._v(" "),
-                            _c("textarea", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.selectedData.sms_text,
-                                  expression: "selectedData.sms_text"
-                                }
-                              ],
-                              staticClass:
-                                "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full",
-                              attrs: { cols: "30", rows: "3", disabled: "" },
-                              domProps: { value: _vm.selectedData.sms_text },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
+        ? _c(
+            "div",
+            [
+              _c("jet-dialog-modal", {
+                attrs: { show: _vm.showModal },
+                on: { close: _vm.closeModal },
+                scopedSlots: _vm._u(
+                  [
+                    {
+                      key: "title",
+                      fn: function() {
+                        return [_c("h2", [_vm._v("Detail Broadcast History")])]
+                      },
+                      proxy: true
+                    },
+                    {
+                      key: "content",
+                      fn: function() {
+                        return [
+                          _c("div", { staticClass: "grid grid-cols-2 gap-4" }, [
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", { attrs: { value: "Msisdn" } }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.msisdn,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.selectedData, "msisdn", $$v)
+                                    },
+                                    expression: "selectedData.msisdn"
                                   }
-                                  _vm.$set(
-                                    _vm.selectedData,
-                                    "sms_text",
-                                    $event.target.value
-                                  )
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Broadcast ID" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.broadcast_id,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "broadcast_id",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "selectedData.broadcast_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Session ID" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.session_id,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "session_id",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "selectedData.session_id"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", { attrs: { value: "Key" } }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.key,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.selectedData, "key", $$v)
+                                    },
+                                    expression: "selectedData.key"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", { attrs: { value: "Status" } }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.status,
+                                    callback: function($$v) {
+                                      _vm.$set(_vm.selectedData, "status", $$v)
+                                    },
+                                    expression: "selectedData.status"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Response Code" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.response_code,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "response_code",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "selectedData.response_code"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Response Code Desc." }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value:
+                                      _vm.selectedData.response_code_display,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "response_code_display",
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "selectedData.response_code_display"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Final Response Code" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.final_response_code,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "final_response_code",
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "selectedData.final_response_code"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Final Response Code Desc." }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value:
+                                      _vm.selectedData
+                                        .final_response_code_display,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "final_response_code_display",
+                                        $$v
+                                      )
+                                    },
+                                    expression:
+                                      "\n                                selectedData.final_response_code_display\n                            "
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Operator SMSC ACK" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.operator_smsc_ack,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "operator_smsc_ack",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "selectedData.operator_smsc_ack"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Operator DLR" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.operator_dlr,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "operator_dlr",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "selectedData.operator_dlr"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-1" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "Billable" }
+                                }),
+                                _vm._v(" "),
+                                _c("jet-input", {
+                                  staticClass: "mt-1 block w-full",
+                                  attrs: { type: "text", disabled: "" },
+                                  model: {
+                                    value: _vm.selectedData.billable,
+                                    callback: function($$v) {
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "billable",
+                                        $$v
+                                      )
+                                    },
+                                    expression: "selectedData.billable"
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "col-span-2 sm:col-span-2" },
+                              [
+                                _c("jet-label", {
+                                  attrs: { value: "SMS Text" }
+                                }),
+                                _vm._v(" "),
+                                _c("textarea", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.selectedData.sms_text,
+                                      expression: "selectedData.sms_text"
+                                    }
+                                  ],
+                                  staticClass:
+                                    "border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm mt-1 block w-full",
+                                  attrs: {
+                                    cols: "30",
+                                    rows: "3",
+                                    disabled: ""
+                                  },
+                                  domProps: {
+                                    value: _vm.selectedData.sms_text
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.selectedData,
+                                        "sms_text",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ]
+                      },
+                      proxy: true
+                    },
+                    {
+                      key: "footer",
+                      fn: function() {
+                        return [
+                          _c(
+                            "jet-secondary-button",
+                            {
+                              nativeOn: {
+                                click: function($event) {
+                                  return _vm.closeModal($event)
                                 }
                               }
-                            })
-                          ],
-                          1
-                        )
-                      ])
-                    ]
-                  },
-                  proxy: true
-                },
-                {
-                  key: "footer",
-                  fn: function() {
-                    return [
-                      _c(
-                        "jet-secondary-button",
-                        {
-                          nativeOn: {
-                            click: function($event) {
-                              _vm.showModal = false
-                            }
-                          }
-                        },
-                        [_vm._v("\n                Close\n            ")]
-                      )
-                    ]
-                  },
-                  proxy: true
-                }
-              ],
-              null,
-              false,
-              793062965
-            )
-          })
+                            },
+                            [
+                              _vm._v(
+                                "\n                    Close\n                "
+                              )
+                            ]
+                          )
+                        ]
+                      },
+                      proxy: true
+                    }
+                  ],
+                  null,
+                  false,
+                  455209635
+                )
+              })
+            ],
+            1
+          )
         : _vm._e()
-    ],
-    1
+    ]
   )
 }
 var staticRenderFns = []
@@ -67335,7 +67379,7 @@ var render = function() {
                   fn: function() {
                     return [
                       _vm._v(
-                        "\n                    Create a management group to group member lists with xlsx,\n                    xlx, or csv files.\n                "
+                        "\n                    Create a management group to group member lists with xlsx or csv files.\n                "
                       )
                     ]
                   },

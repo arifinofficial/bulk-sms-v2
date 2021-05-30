@@ -12,8 +12,7 @@
                     <template #title> Create Group Management </template>
 
                     <template #description>
-                        Create a management group to group member lists with xlsx,
-                        xlx, or csv files.
+                        Create a management group to group member lists with xlsx or csv files.
                     </template>
 
                     <template #form>

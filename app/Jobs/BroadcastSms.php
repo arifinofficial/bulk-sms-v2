@@ -69,7 +69,7 @@ class BroadcastSms implements ShouldQueue
 
             $responseCode = $responseSms[0];
             $responseCodeDisplay = Config::get("status-response-code.$responseCode");
-            $status = $responseCode == '6801' ? BroadcastMemberStatus::PROCESSING : BroadcastMemberStatus::FAILED;
+            $status = $responseCode == "6801" ? BroadcastMemberStatus::PROCESSING : BroadcastMemberStatus::FAILED;
             $sessionId = count($responseSms) > 1 ? $responseSms[1] : null;
 
             $data = [

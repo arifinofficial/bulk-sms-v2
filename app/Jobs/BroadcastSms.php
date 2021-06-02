@@ -65,7 +65,7 @@ class BroadcastSms implements ShouldQueue
 
             $requestSms = SendSmsTrait::send($apiUsername, $apiPassword, $msisdnSender, $member->msisdn, $formattedText, $boradcastId, $encryptKey);
 
-            $responseSms = explode(" ", $requestSms);
+            $responseSms = explode(PHP_EOL, $requestSms);
 
             $responseCode = $responseSms[0];
             $responseCodeDisplay = Config::get("status-response-code.$responseCode");
